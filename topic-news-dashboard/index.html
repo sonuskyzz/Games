@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic-wise News Promotion Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Topic-wise News Promotion Tracker</h1>
+      <p class="subtitle">
+        Google Sheet se data read karke topic ke hisaab se news ka count dikhata hai.
+      </p>
+
+      <section class="card controls">
+        <label for="sheetUrl">Google Sheet URL</label>
+        <input
+          id="sheetUrl"
+          type="url"
+          placeholder="https://docs.google.com/spreadsheets/d/.../edit?gid=..."
+        />
+
+        <div class="row">
+          <div>
+            <label for="topicColumn">Topic column</label>
+            <select id="topicColumn"></select>
+          </div>
+          <div>
+            <label for="headlineColumn">News/Headline column</label>
+            <select id="headlineColumn"></select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="loadBtn">Load Data</button>
+          <button id="analyzeBtn" disabled>Analyze</button>
+        </div>
+
+        <p id="status" class="status">Sheet URL daal kar “Load Data” dabaiye.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Topic-wise Count</h2>
+          <canvas id="topicChart" height="240"></canvas>
+        </article>
+
+        <article class="card">
+          <h2>Most Repeated Headlines</h2>
+          <ul id="repeatedList" class="list"></ul>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Topic Breakdown</h2>
+        <div id="topicBreakdown"></div>
+      </section>
+    </main>
+  </body>
+</html>
